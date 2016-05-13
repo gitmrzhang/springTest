@@ -19,6 +19,7 @@ public class ReflectObj {
 		System.out.println(this.name);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		Class<ReflectObj> clazz = (Class<ReflectObj>) Class.forName("com.zhang.module.login.ReflectObj");
 		ReflectObj obj = clazz.newInstance();
