@@ -14,6 +14,7 @@
 	<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 	<maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
   </properties>
   
   <dependencies>
@@ -56,11 +57,25 @@
 	<dependency>
 	  <groupId>javax.servlet</groupId>
 	  <artifactId>javax.servlet-api</artifactId>
-	  <version>4.0.0-b01</version>
+	  <version>3.1.0</version>
+	  <scope>provided</scope>
 	</dependency>
   </dependencies>
   <build>
+  	<finalName>app</finalName>
   	<plugins>
+  		<!-- 编译 可以指定jdk版本 -->
+  		<plugin>
+			  <groupId>org.apache.maven.plugins</groupId>
+			  <artifactId>maven-compiler-plugin</artifactId>
+			  <version>3.5.1</version>
+			  <configuration>
+			  	<source>${maven.compiler.source}</source>
+			  	<target>${maven.compiler.target}</target>
+			  	<compilerVersion>${maven.compiler.compilerVersion}</compilerVersion>
+			  	<encoding>${maven.compiler.encoding}</encoding>
+			  </configuration>
+  		</plugin>
   		<plugin>
   			<!-- 打源码包插件 -->
 			  <groupId>org.apache.maven.plugins</groupId>
@@ -76,25 +91,17 @@
 			  		</execution>
 			    </executions>
   		</plugin>
-	  	<plugin>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <configuration>
-                <source>${maven.compiler.source}</source>
-                <target>${maven.compiler.target}</target>
-                <encoding>utf8</encoding>
-                <skip>true</skip>
-            </configuration>
-        </plugin>
   		<plugin>
 			  <groupId>org.apache.tomcat.maven</groupId>
 			  <artifactId>tomcat7-maven-plugin</artifactId>
 			  <version>2.2</version>
 			  <configuration>
 				  <port>9090</port>
-	              <path>/webapp</path>
+	              <path>/app</path>
 	              <uriEncoding>UTF-8</uriEncoding>
-	              <finalName>springtest</finalName>
+	              <finalName>app</finalName>
 	              <server>tomcat7</server>
+	              <warFile>${project.build.directory}/${project.build.finalName}.war</warFile>
 			  </configuration>
   		</plugin>
   	</plugins>
