@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhang.module.login.loginDao">
+	<resultMap type="com.zhang.module.bean.UserVo" id="baseMap">
+		<result column="username" property="username"/>
+		<result column="username" property="password"/>
+	</resultMap>
+	<select id="selectList" resultMap="baseMap">
+		select username,password from iskyshop_user;
+	</select>
+</mapper>
