@@ -11,8 +11,20 @@
  * 修改时间：暂无<br/>
  */
 package com.zhang.module.login.dao;
-public class LoginDao {
+
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
+import com.zhang.core.dao.MybatisDao;
+import com.zhang.module.bean.UserVo;
+@Repository
+public class LoginDao extends MybatisDao{
 	//TODO 记得要写注释，方便别人，成就自己。
 	
+	public List<UserVo> getUserList(){
+		List<UserVo> list = this.getSqlSession().selectList("com.zhang.module.login.loginDao.selectList");
+		return list;
+	}
 }
 

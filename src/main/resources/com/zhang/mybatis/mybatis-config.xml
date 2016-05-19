@@ -2,6 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<!-- 引入数据库配置文件 -->
+	<!-- 
 	<properties resource="./././jdbc.properties"/>
 	<environments default="dev">
 		<environment id="dev">
@@ -14,7 +15,5 @@
 			</dataSource>
 		</environment>
 	</environments>
-	<mappers>
-		<mapper resource="com/zhang/mybatis/mappers/user-mapper.xml"/>
-	</mappers>
+	 -->
 </configuration>
