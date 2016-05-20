@@ -23,7 +23,7 @@ public class LoginDao extends MybatisDao{
 	//TODO 记得要写注释，方便别人，成就自己。
 	
 	public List<UserVo> getUserList(){
-		List<UserVo> list = this.getSqlSession().selectList("com.zhang.module.login.loginDao.selectList");
+		List<UserVo> list = this.getSqlSession().selectList("selectList");
 		return list;
 	}
 }

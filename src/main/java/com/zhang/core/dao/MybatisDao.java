@@ -12,14 +12,17 @@
  */
 package com.zhang.core.dao;
 
+import javax.annotation.Resource;
+
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class MybatisDao extends SqlSessionDaoSupport {
 	//TODO 记得要写注释，方便别人，成就自己。
-	@Autowired
-	private SqlSessionFactory sqlSessionFactory;
 	
+	@Resource
+	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory){
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
 }
 

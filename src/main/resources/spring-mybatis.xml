@@ -25,4 +25,9 @@
     	<property name="mapperLocations" value="classpath:com/zhang/mybatis/mappers/*.xml"/>
     </bean>
     
+    <bean id="baseDao" class="com.zhang.core.dao.MybatisDao">
+    	<property name="sqlSessionFactory"  ref="sqlSessionFactory"/>
+    </bean>
+    
+    
 </beans>

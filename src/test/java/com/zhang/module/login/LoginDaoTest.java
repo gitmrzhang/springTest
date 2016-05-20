@@ -29,6 +29,7 @@ public class LoginDaoTest {
 	//TODO 记得要写注释，方便别人，成就自己。
 	@Autowired
 	private LoginDao loginDao;
+	
 	@Test
 	public void testList(){
 		List<UserVo> l = loginDao.getUserList();
