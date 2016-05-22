@@ -13,14 +13,25 @@
 package com.zhang.module.login.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class LoginController {
-	//TODO 记得要写注释，方便别人，成就自己。
-	@RequestMapping(value="/login.do")
-	public String loginPage(){
-		return "login";
+	// TODO 记得要写注释，方便别人，成就自己。
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@ResponseBody
+	public String loginPage(@RequestParam String userid) {
+		return userid;
 	}
-}
 
+	@RequestMapping(value = "/login/{userid}", method = RequestMethod.GET)
+	@ResponseBody
+	public String loginPage2(@PathVariable String userid) {
+		return userid;
+	}
+
+}
