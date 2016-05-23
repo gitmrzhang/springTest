@@ -12,6 +12,9 @@
  */
 package com.zhang.module.login.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +35,12 @@ public class LoginController {
 	@ResponseBody
 	public String loginPage2(@PathVariable String userid) {
 		return userid;
+	}
+
+	@RequestMapping(value = "/controllerversion", method = RequestMethod.GET)
+	@ResponseBody
+	public String controllerversion(HttpServletRequest request,HttpServletResponse reponse) {
+		return "";
 	}
 
 }
