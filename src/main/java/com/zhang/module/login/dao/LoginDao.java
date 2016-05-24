@@ -26,5 +26,10 @@ public class LoginDao extends MybatisDao{
 		List<UserVo> list = this.getSqlSession().selectList("selectList");
 		return list;
 	}
+	
+	public UserVo getUserByName(String username){
+		UserVo vo = this.getSqlSession().selectOne("selectByUsername",username);
+		return vo;
+	}
 }
 

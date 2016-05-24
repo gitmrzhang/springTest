@@ -2,14 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhang.module.login.loginDao">
 
-	<resultMap id="baseMap" type="com.zhang.module.bean.UserVo"  >
-		<result column="username" property="username"/>
-		<result column="username" property="password"/>
+	<resultMap id="baseMap" type="com.zhang.module.bean.UserVo">
+		<result column="username" property="username" />
+		<result column="username" property="password" />
 	</resultMap>
-	
-	
+
 	<select id="selectList" resultMap="baseMap">
-		select username,password from iskyshop_user;
+		select username,password from
+		iskyshop_user;
 	</select>
-	
+
+	<select id="selectByUsername" resultMap="baseMap" parameterType="String">
+		select username,password from
+		iskyshop_user where username = #{0}
+	</select>
+
 </mapper>

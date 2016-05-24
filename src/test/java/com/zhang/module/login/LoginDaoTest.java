@@ -35,5 +35,10 @@ public class LoginDaoTest {
 		List<UserVo> l = loginDao.getUserList();
 		System.out.println(l.size()+" "+l.get(0).getUsername());
 	}
+	@Test
+	public void testName(){
+		UserVo l = loginDao.getUserByName("BUYER");
+		System.out.println(l);
+	}
 }
 

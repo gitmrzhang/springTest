@@ -12,24 +12,23 @@
  */
 package com.zhang.module.login;
 
-
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zhang.module.bean.UserVo;
-
+import com.zhang.module.login.dao.LoginDao;
 @Service
 public class LoginService implements InitializingBean {
-	//TODO 记得要写注释，方便别人，成就自己。
-	public UserVo getUser(String username){
-		UserVo user = new UserVo();
-		user.setUsername(username);
-		user.setPassword("123456");
-		return user;
+	
+	@Autowired
+	private LoginDao loginDao;
+
+	public UserVo getUser(String username) {
+		return loginDao.getUserByName(username);
 	}
 
 	public void afterPropertiesSet() throws Exception {
 		System.out.println("LoginService init success");
 	}
 }
-
