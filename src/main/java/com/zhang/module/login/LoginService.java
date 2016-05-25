@@ -18,7 +18,8 @@ import org.springframework.stereotype.Service;
 
 import com.zhang.module.bean.UserVo;
 import com.zhang.module.login.dao.LoginDao;
-@Service
+
+@Service("loginService")
 public class LoginService implements InitializingBean {
 	
 	@Autowired
