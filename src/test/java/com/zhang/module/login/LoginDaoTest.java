@@ -24,9 +24,10 @@ import com.zhang.module.bean.UserVo;
 import com.zhang.module.login.dao.LoginDao;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="classpath:spring.xml")
+@ContextConfiguration(locations={"classpath:spring.xml"})
 public class LoginDaoTest {
 	//TODO 记得要写注释，方便别人，成就自己。
+	
 	@Autowired
 	private LoginDao loginDao;
 	
