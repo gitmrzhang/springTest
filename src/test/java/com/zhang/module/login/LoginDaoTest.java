@@ -14,6 +14,7 @@ package com.zhang.module.login;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ import com.zhang.module.login.dao.LoginDao;
 public class LoginDaoTest {
 	//TODO 记得要写注释，方便别人，成就自己。
 	
+	private Logger logger = Logger.getLogger(LoginDaoTest.class);
+	
 	@Autowired
 	private LoginDao loginDao;
 	
@@ -38,8 +41,10 @@ public class LoginDaoTest {
 	}
 	@Test
 	public void testName(){
+		logger.debug("testName begin");
 		UserVo l = loginDao.getUserByName("BUYER");
 		System.out.println(l);
+		logger.debug("testName end");
 	}
 }
 

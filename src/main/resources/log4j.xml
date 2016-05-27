@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{yyyy/MM/dd HH:mm:ss:SSS}] %-5p (%c): %m%n" />
+		</layout>
+	</appender>
+	<appender name="FILE-INFO" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="${user.home}/spring-test-info.log" />
+		<param name="threshold" value="INFO" />
+		<param name="append" value="true" />
+		<param name="maxFileSize" value="10MB" />
+		<param name="maxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %-5p %C{6} (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	<appender name="FILE-ERROR" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="${user.home}/spring-test-error.log" />
+		<param name="threshold" value="ERROR" />
+		<param name="append" value="true" />
+		<param name="maxFileSize" value="10MB" />
+		<param name="maxBackupIndex" value="100" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%t] %-5p %C{6} (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+  	<root>
+		<level value="INFO" />
+		<level value="DEBUG" />
+		<appender-ref ref="CONSOLE" />
+		<appender-ref ref="FILE-INFO" />
+		<appender-ref ref="FILE-ERROR" />
+	</root>
+</log4j:configuration>
