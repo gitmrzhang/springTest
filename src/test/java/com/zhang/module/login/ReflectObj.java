@@ -11,12 +11,17 @@
  * 修改时间：暂无<br/>
  */
 package com.zhang.module.login;
+
 public class ReflectObj {
 	//TODO 记得要写注释，方便别人，成就自己。
 	private String name ;
 	
+	private static final String APPLICATION_CONTEXT_ATTRIBUTE = ReflectObj.class.getName()+".context";
+	
+	
 	public void sysName(){
 		System.out.println(this.name);
+		System.out.println(APPLICATION_CONTEXT_ATTRIBUTE);
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -26,5 +31,6 @@ public class ReflectObj {
 		obj.name="zhang";
 		obj.sysName();
 	}
+
 }
 
