@@ -34,12 +34,18 @@ public class ProjectRequestMappingTest {
 	@Test
 	public void showMapping(){
 		StringBuilder sb = new StringBuilder();  
-        sb.append("URL").append("--").append("Class").append("--").append("Function").append('\n');  
+        sb.append("URL").append("--").append("Method").append("--").append("param").append("--").append("Class").append("--").append("Function").append('\n');  
         Map<RequestMappingInfo, HandlerMethod> map = requestMappingHandlerMapping.getHandlerMethods();  
         for (Map.Entry<RequestMappingInfo, HandlerMethod> m : map.entrySet()) {  
             RequestMappingInfo info = m.getKey();  
             HandlerMethod method = m.getValue();  
             sb.append(info.getPatternsCondition()).append("--");  
+            sb.append(info.getMethodsCondition()).append("--");  
+            sb.append(info.getParamsCondition()).append("--");  
+            sb.append(info.getProducesCondition()).append("--");  
+            sb.append(info.getConsumesCondition()).append("--");  
+            sb.append(info.getCustomCondition()).append("--");  
+            sb.append(info.getHeadersCondition()).append("--");  
             sb.append(method.getMethod().getDeclaringClass()).append("--");  
             sb.append(method.getMethod().getName()).append('\n');  
         }
