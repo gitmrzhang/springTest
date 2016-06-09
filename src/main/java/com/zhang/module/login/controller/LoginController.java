@@ -42,7 +42,7 @@ public class LoginController {
 	@Autowired
     private RequestMappingHandlerMapping requestMappingHandlerMapping; 
 	
-	@RequestMapping(value = "/toLogin", method = RequestMethod.GET)
+	@RequestMapping(value = "/toLogin", name="toLogin",method = RequestMethod.GET)
 	public String toLogin() {
 		return "login";
 	}
@@ -87,7 +87,7 @@ public class LoginController {
 		return "";
 	}
 	
-    @RequestMapping(value = "/admin/util/urlcontroller",method = RequestMethod.GET)  
+    @RequestMapping(value = "/admin/util/urlcontroller",name="getAvailableSource",method = RequestMethod.GET)  
     @ResponseBody  
     public void list(HttpServletResponse response) {  
         StringBuilder sb = new StringBuilder();  

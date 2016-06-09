@@ -12,7 +12,7 @@
  */
 package com.zhang.core;
 
-import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
@@ -51,6 +51,17 @@ public class ProjectRequestMappingTest {
         }
         System.out.println("---------------------------");
         System.out.println(sb.toString());
+	}
+	
+	@Test
+	public void showNameMethod(){
+		//获取是 @RequestMapping 中的name  
+		//loginController--class org.springframework.web.method.HandlerMethod--class com.zhang.module.login.controller.LoginController--list
+		List<HandlerMethod> handlerMethods = requestMappingHandlerMapping.getHandlerMethodsForMappingName("getAvailableSource");
+		for(HandlerMethod handler : handlerMethods){
+			System.out.println(handler.getBean()+"--"+handler.getClass()+"--"+handler.getBeanType()+"--"
+					+handler.getMethod().getName());
+		}
 	}
 	
 }
