@@ -19,7 +19,6 @@
 	<mvc:annotation-driven />
 	<context:component-scan base-package="com.zhang.module.**.controller" />
 	<mvc:view-controller path="/" view-name="redirect:/toLogin.do" />
-
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/WEB-INF/page/" p:suffix=".jsp" />
