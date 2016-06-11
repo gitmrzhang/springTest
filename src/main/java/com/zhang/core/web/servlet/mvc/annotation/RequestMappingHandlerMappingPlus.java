@@ -1,4 +1,4 @@
-package com.zhang.core.mvc.annotation;
+package com.zhang.core.web.servlet.mvc.annotation;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -20,6 +20,7 @@ import org.springframework.util.Assert;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsUtils;
@@ -66,7 +67,14 @@ public class RequestMappingHandlerMappingPlus extends RequestMappingHandlerMappi
 		//根据请求获取当前头的 服务名 根据服务名与handlerMethod的映射返回值
 		String lookupName = getRequestHead(request);
 		List<Match> matches = new ArrayList<Match>();
-		 List<HandlerMethod> directNameHandlerMethodMatches = getHandlerMethodsForMappingName(lookupName);
+		List<HandlerMethod> directNameHandlerMethodMatches = null;
+		if(StringUtils.isEmpty(lookupName)){
+			if (logger.isDebugEnabled()) {
+				logger.debug("server name not found in request header " + lookupName);
+			}
+		}else{
+			directNameHandlerMethodMatches = getHandlerMethodsForMappingName(lookupName);
+		}
 		 if (directNameHandlerMethodMatches != null) {
 			 List<RequestMappingInfo> directNameMatches = new ArrayList<RequestMappingInfo>();
 			 for(HandlerMethod hm : directNameHandlerMethodMatches){
@@ -109,6 +117,11 @@ public class RequestMappingHandlerMappingPlus extends RequestMappingHandlerMappi
 				matches.add(new Match(match, this.mappingRegistry.getMappings().get(mapping)));
 			}
 		}
+	}
+	
+	@Override
+	public List<HandlerMethod> getHandlerMethodsForMappingName(String mappingName) {
+		return this.mappingRegistry.getHandlerMethodsByMappingName(mappingName);
 	}
 	
 	@Override
@@ -200,6 +213,7 @@ public class RequestMappingHandlerMappingPlus extends RequestMappingHandlerMappi
 		}
 
 		public void register(RequestMappingInfo mapping, Object handler, Method method) {
+			
 			this.readWriteLock.writeLock().lock();
 			try {
 				HandlerMethod handlerMethod = createHandlerMethod(handler, method);

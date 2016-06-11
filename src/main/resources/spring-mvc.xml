@@ -16,7 +16,9 @@
             http://www.springframework.org/schema/context 
             http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<mvc:annotation-driven />
+	<!-- <mvc:annotation-driven /> -->
+	<bean name="handlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+	<bean name="handlerMapping" class="com.zhang.core.web.servlet.mvc.annotation.CustomRequestMappingHandlerMapping" />
 	<context:component-scan base-package="com.zhang.module.**.controller" />
 	<mvc:view-controller path="/" view-name="redirect:/toLogin.do" />
 	<bean id="viewResolver"

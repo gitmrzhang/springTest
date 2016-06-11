@@ -22,20 +22,24 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
+import com.zhang.core.web.servlet.mvc.annotation.RequestMappingHandlerMappingPlus;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:spring.xml"})
 public class ProjectRequestMappingTest {
 	
 	@Autowired
-	private RequestMappingHandlerMapping  requestMappingHandlerMapping;
+	private RequestMappingHandlerMappingPlus  requestMappingHandlerMapping;
 	
 	@Test
 	public void showMapping(){
 		StringBuilder sb = new StringBuilder();  
         sb.append("URL").append("--").append("Method").append("--").append("param").append("--").append("Class").append("--").append("Function").append('\n');  
-        Map<RequestMappingInfo, HandlerMethod> map = requestMappingHandlerMapping.getHandlerMethods();  
+        Map<RequestMappingInfo, HandlerMethod> map = requestMappingHandlerMapping.getHandlerMethods(); 
+        List<HandlerMethod> hm = requestMappingHandlerMapping.getHandlerMethodsForMappingName("getAvailableSource");
+        for(HandlerMethod h :hm){
+        	System.out.println(h.getMethod().getName());
+        }
         for (Map.Entry<RequestMappingInfo, HandlerMethod> m : map.entrySet()) {  
             RequestMappingInfo info = m.getKey();  
             HandlerMethod method = m.getValue();  
@@ -48,6 +52,11 @@ public class ProjectRequestMappingTest {
             sb.append(info.getHeadersCondition()).append("--");  
             sb.append(method.getMethod().getDeclaringClass()).append("--");  
             sb.append(method.getMethod().getName()).append('\n');  
+//            RequestMappingInfo mappinfo = requestMappingHandlerMapping.getRequestMappingInfoByHandlerMethod(method);
+//            if(info.getMethodsCondition().equals(mappinfo.getMethodsCondition())){
+//            	sb.append("method found mapping").append('\n');  
+//            }
+            
         }
         System.out.println("---------------------------");
         System.out.println(sb.toString());

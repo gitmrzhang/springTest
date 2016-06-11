@@ -33,14 +33,15 @@ import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
+import com.zhang.core.web.servlet.mvc.annotation.CustomRequestMappingHandlerMapping;
 import com.zhang.module.bean.UserVo;
 
 @Controller
+@RequestMapping("api")
 public class LoginController {
-	// TODO 记得要写注释，方便别人，成就自己。
 	
-	@Autowired
-    private RequestMappingHandlerMapping requestMappingHandlerMapping; 
+//	@Autowired
+//    private RequestMappingHandlerMapping requestMappingHandlerMapping; 
 	
 	@RequestMapping(value = "/toLogin", name="toLogin",method = RequestMethod.GET)
 	public String toLogin() {
@@ -75,40 +76,34 @@ public class LoginController {
 		}
 	}
 
-	@RequestMapping(value = "/dologin/{userid}", method = RequestMethod.GET)
+	@RequestMapping(value = "/dologin/{userid}",name="getUserId", method = RequestMethod.GET)
 	@ResponseBody
-	public String loginPage2(@PathVariable String userid) {
+	public String getUserId(@PathVariable String userid) {
 		return userid;
 	}
 
-	@RequestMapping(value = "/controllerversion", method = RequestMethod.GET)
-	@ResponseBody
-	public String controllerversion(HttpServletRequest request, HttpServletResponse reponse) {
-		return "";
-	}
-	
-    @RequestMapping(value = "/admin/util/urlcontroller",name="getAvailableSource",method = RequestMethod.GET)  
-    @ResponseBody  
-    public void list(HttpServletResponse response) {  
-        StringBuilder sb = new StringBuilder();  
-        sb.append("URL").append("--").append("Class").append("--").append("Function").append('\n');  
-  
-        Map<RequestMappingInfo, HandlerMethod> map = requestMappingHandlerMapping.getHandlerMethods();  
-        for (Map.Entry<RequestMappingInfo, HandlerMethod> m : map.entrySet()) {  
-            RequestMappingInfo info = m.getKey();  
-            HandlerMethod method = m.getValue();  
-            sb.append(info.getPatternsCondition()).append("--");  
-            sb.append(method.getMethod().getDeclaringClass()).append("--");  
-            sb.append(method.getMethod().getName()).append('\n');  
-        }  
-        PrintWriter writer = null;  
-        try {  
-            writer = response.getWriter();  
-            writer.print(sb.toString());  
-        } catch (IOException e) {  
-            e.printStackTrace();  
-        } finally {  
-            writer.close();  
-        }  
-    }  
+//    @RequestMapping(value = "/admin/util/urlcontroller",name="getAvailableSource",method = RequestMethod.GET)  
+//    @ResponseBody  
+//    public void list(HttpServletResponse response) {  
+//        StringBuilder sb = new StringBuilder();  
+//        sb.append("URL").append("--").append("Class").append("--").append("Function").append('\n');  
+//  
+//        Map<RequestMappingInfo, HandlerMethod> map = requestMappingHandlerMapping.getHandlerMethods();  
+//        for (Map.Entry<RequestMappingInfo, HandlerMethod> m : map.entrySet()) {  
+//            RequestMappingInfo info = m.getKey();  
+//            HandlerMethod method = m.getValue();  
+//            sb.append(info.getPatternsCondition()).append("--");  
+//            sb.append(method.getMethod().getDeclaringClass()).append("--");  
+//            sb.append(method.getMethod().getName()).append('\n');  
+//        }  
+//        PrintWriter writer = null;  
+//        try {  
+//            writer = response.getWriter();  
+//            writer.print(sb.toString());  
+//        } catch (IOException e) {  
+//            e.printStackTrace();  
+//        } finally {  
+//            writer.close();  
+//        }  
+//    }  
 }
