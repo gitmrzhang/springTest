@@ -14,7 +14,7 @@ import com.zhang.core.web.servlet.mvc.annotation.CustomRequestMappingHandlerMapp
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring.xml" })
-public class RequestMappingHandlerMappingPlusTest {
+public class CustomRequestMappingHandlerMappingTest {
 	@Autowired
 	CustomRequestMappingHandlerMapping requestMappingHandlerMapping ;
 	
