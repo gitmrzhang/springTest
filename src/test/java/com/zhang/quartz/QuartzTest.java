@@ -13,6 +13,8 @@
 package com.zhang.quartz;
 
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.Test;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
@@ -30,17 +32,23 @@ public class QuartzTest {
 	@Test
 	public void test() throws SchedulerException{
 		Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
+		scheduler.start();
         // 具体任务
         JobDetail job = JobBuilder.newJob(HelloQuartzJob.class).withIdentity("job1", "group1").build();
 
-        // 触发时间点
-        SimpleScheduleBuilder simpleScheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
-                .withIntervalInSeconds(5).repeatForever();
+        // 触发时间点 5s执行一次 执行10次
+        SimpleScheduleBuilder simpleScheduleBuilder = SimpleScheduleBuilder.simpleSchedule().repeatSecondlyForTotalCount(10)
+                .withIntervalInSeconds(5);
         Trigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger1", "group1")
                 .startNow().withSchedule(simpleScheduleBuilder).build();
         // 交由Scheduler安排触发
         scheduler.scheduleJob(job, trigger);
-        scheduler.start();
+        try {
+            TimeUnit.MINUTES.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        scheduler.shutdown();
 	}
 
 }

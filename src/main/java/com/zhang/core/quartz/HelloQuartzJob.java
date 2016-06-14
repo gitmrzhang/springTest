@@ -12,6 +12,7 @@
  */
 package com.zhang.core.quartz;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.quartz.Job;
@@ -23,8 +24,8 @@ public class HelloQuartzJob implements Job {
 	@Override
 	public void execute(JobExecutionContext context) throws JobExecutionException {
 		
-		System.out.println("Hello, Quartz! - executing its JOB at "+ 
-	            new Date() + " by " + context.getTrigger().getCalendarName());
+		System.out.println("Hello, Quartz! - executing HelloQuartzJob JOB at "+ 
+	          new SimpleDateFormat("yyyy-MM-dd hh:mm:ss-ms").format(new Date())  + " by " + context.getTrigger().getKey());
 		
 	}
 
