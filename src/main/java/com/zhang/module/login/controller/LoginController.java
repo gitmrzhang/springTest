@@ -12,28 +12,19 @@
  */
 package com.zhang.module.login.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.method.HandlerMethod;
-import org.springframework.web.servlet.mvc.method.RequestMappingInfo;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
-import com.zhang.core.web.servlet.mvc.annotation.CustomRequestMappingHandlerMapping;
 import com.zhang.module.bean.UserVo;
 
 @Controller
@@ -41,7 +32,7 @@ import com.zhang.module.bean.UserVo;
 public class LoginController {
 	
 //	@Autowired
-//    private RequestMappingHandlerMapping requestMappingHandlerMapping; 
+//  private RequestMappingHandlerMapping requestMappingHandlerMapping; 
 	
 	@RequestMapping(value = "/toLogin", name="toLogin",method = RequestMethod.GET)
 	public String toLogin() {

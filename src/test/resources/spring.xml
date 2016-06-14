@@ -16,7 +16,6 @@
 	<import resource="spring-mybatis.xml" />
 	<import resource="spring-shiro.xml" />
 	<import resource="spring-cache.xml" />
+	<import resource="spring-quartz.xml" />
 	<context:property-placeholder location="classpath:jdbc.properties" />
-	<bean class="com.zhang.core.web.servlet.mvc.annotation.CustomRequestMappingHandlerMapping"/>
-	<bean class="com.zhang.core.web.servlet.config.CustomWebMvcConfigurationSupport" />
 </beans>
