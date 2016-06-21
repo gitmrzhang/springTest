@@ -24,12 +24,16 @@ import com.zhang.module.bean.UserVo;
 @ContextConfiguration(locations="classpath:spring.xml")
 public class LoginServiceTest {
 	@Autowired
-	private LoginService loginService;
+	private ILoginService loginService;
 	
 	@Test
 	public void testGetUser() {
 		UserVo vo = loginService.getUser("zhang");
 		System.out.println(vo.getUsername()+" "+vo.getPassword());
+	}
+	@Test
+	public void testTran() {
+		loginService.update();
 	}
 }
 

@@ -22,19 +22,21 @@ import org.apache.shiro.realm.Realm;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.zhang.module.bean.UserVo;
-import com.zhang.module.login.LoginService;
+import com.zhang.module.login.ILoginService;
 
 public class DataBaseRealm implements Realm {
 
 	private final static String name = DataBaseRealm.class.getName() + "_realmName";
+	
 	@Autowired
-	private LoginService loginService;
+	private ILoginService loginService;
+
 
 	/**
 	 * loginService属性的get方法
 	 * @return the loginService
 	 */
-	public LoginService getLoginService() {
+	public ILoginService getLoginService() {
 	
 		return loginService;
 	}
@@ -43,7 +45,7 @@ public class DataBaseRealm implements Realm {
 	 * loginService属性的set方法
 	 * @param loginService the loginService to set
 	 */
-	public void setLoginService(LoginService loginService) {
+	public void setLoginService(ILoginService loginService) {
 	
 		this.loginService = loginService;
 	}

@@ -17,6 +17,8 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.zhang.core.dao.MybatisDao;
+import com.zhang.module.bean.CouponPo;
+import com.zhang.module.bean.UserPo;
 import com.zhang.module.bean.UserVo;
 @Repository
 public class LoginDao extends MybatisDao{
@@ -31,5 +33,15 @@ public class LoginDao extends MybatisDao{
 		UserVo vo = this.getSqlSession().selectOne("selectByUsername",username);
 		return vo;
 	}
+	
+	public void updateUserTest(UserPo userPo){
+		this.getSqlSession().update("update", userPo);
+	}
+	
+	public void updateUserCouponTest(CouponPo couponPo){
+		this.getSqlSession().update("update2", couponPo);
+	}
+	
+	
 }
 

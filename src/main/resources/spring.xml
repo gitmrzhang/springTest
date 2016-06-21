@@ -13,6 +13,10 @@
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
 	
 	<context:component-scan base-package="com.zhang.module" />
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+ 	   <property name="dataSource" ref="dataSource"/>
+    </bean>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 	<import resource="spring-mybatis.xml" />
 	<import resource="spring-shiro.xml" />
 	<import resource="spring-cache.xml" />
