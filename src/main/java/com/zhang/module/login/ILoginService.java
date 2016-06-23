@@ -12,6 +12,7 @@
  */
 package com.zhang.module.login;
 
+import com.zhang.core.route.annotation.DataSource;
 import com.zhang.module.bean.CouponPo;
 import com.zhang.module.bean.UserPo;
 import com.zhang.module.bean.UserVo;
@@ -21,10 +22,12 @@ public interface ILoginService {
 	 * 属性名和方法名要尽量做到见名知意，以达到自注释效果，这样也能过做到约定优于配置的原则
 	 * 接口中定义的所有属性的属性名必须全部大写，并且赋予初始值。
 	 */
+	@DataSource("salver")
 	public UserVo getUser(String username) ;
 	
 	void updateUser(UserPo userPo);
 	
+	@DataSource("master")
 	void updateUserCoupon(CouponPo couponPo);
 	
 	void update();

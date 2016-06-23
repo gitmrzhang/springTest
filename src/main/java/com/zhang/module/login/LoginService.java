@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.zhang.core.route.annotation.DataSource;
 import com.zhang.module.bean.CouponPo;
 import com.zhang.module.bean.UserPo;
 import com.zhang.module.bean.UserVo;
@@ -27,7 +28,8 @@ public class LoginService implements ILoginService,InitializingBean {
 	
 	@Autowired
 	private LoginDao loginDao;
-
+	
+	@DataSource("salver")
 	public UserVo getUser(String username) {
 		return loginDao.getUserByName(username);
 	}
@@ -43,6 +45,7 @@ public class LoginService implements ILoginService,InitializingBean {
 	}
 
 	@Override
+	@DataSource("master")
 	public void updateUserCoupon(CouponPo couponPo) {
 		loginDao.updateUserCouponTest(couponPo);
 	}

@@ -37,7 +37,8 @@ public class QuartzTest {
         JobDetail job = JobBuilder.newJob(HelloQuartzJob.class).withIdentity("job1", "group1").build();
 
         // 触发时间点 5s执行一次 执行10次
-        SimpleScheduleBuilder simpleScheduleBuilder = SimpleScheduleBuilder.simpleSchedule().repeatSecondlyForTotalCount(10)
+        @SuppressWarnings("static-access")
+		SimpleScheduleBuilder simpleScheduleBuilder = SimpleScheduleBuilder.simpleSchedule().repeatSecondlyForTotalCount(10)
                 .withIntervalInSeconds(5);
         Trigger trigger = TriggerBuilder.newTrigger().withIdentity("trigger1", "group1")
                 .startNow().withSchedule(simpleScheduleBuilder).build();

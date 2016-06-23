@@ -15,13 +15,17 @@
 		proxy-target-class="false" />
 
 	<bean id="logger" class="com.zhang.core.aop.LoggerAop" />
-
+	<bean id="dataSourceAspect" class="com.zhang.core.route.aop.DataSourceAspect" />
 	<aop:config>
 		<aop:pointcut expression="execution(* com.zhang.module.**.*.*(..))"
-			id="serviceLogAop" />
+			id="servicePointcut" />
+
+		<aop:aspect ref="dataSourceAspect">
+			<aop:before method="route" pointcut-ref="servicePointcut" />
+		</aop:aspect>
 
 		<aop:aspect ref="logger">
-			<aop:before method="preHandler" pointcut-ref="serviceLogAop" />
+			<aop:before method="preHandler" pointcut-ref="servicePointcut" />
 		</aop:aspect>
 
 	</aop:config>
