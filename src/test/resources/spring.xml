@@ -11,16 +11,13 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd 
 		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd">
-	
+
 	<context:component-scan base-package="com.zhang.module" />
-	
-	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
- 	   <property name="dataSource" ref="dataSource"/>
-    </bean>
-	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="false"/>
+
 	<import resource="spring-mybatis.xml" />
 	<import resource="spring-shiro.xml" />
 	<import resource="spring-cache.xml" />
 	<import resource="spring-quartz.xml" />
+	<import resource="spring-aop.xml" />
 	<context:property-placeholder location="classpath:jdbc.properties" />
 </beans>

@@ -36,9 +36,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-context-support</artifactId>
-		    <version>${spring-version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -110,19 +110,24 @@
 			<version>1.2.17</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.apache.poi</groupId>
-		  <artifactId>poi</artifactId>
-		  <version>3.11</version>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.11</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.quartz-scheduler</groupId>
-		  <artifactId>quartz</artifactId>
-		  <version>2.1.1</version>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.1.1</version>
 		</dependency>
 		<dependency>
-		  <groupId>cglib</groupId>
-		  <artifactId>cglib</artifactId>
-		  <version>3.1</version>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>1.8.9</version>
 		</dependency>
 	</dependencies>
 	<build>
