@@ -16,6 +16,7 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 		<maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
+		<jedis-version>2.8.1</jedis-version>
 	</properties>
 
 	<dependencies>
@@ -128,6 +129,11 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.8.9</version>
+		</dependency>
+		<dependency>
+		  <groupId>redis.clients</groupId>
+		  <artifactId>jedis</artifactId>
+		  <version>${jedis-version}</version>
 		</dependency>
 	</dependencies>
 	<build>
