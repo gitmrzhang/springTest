@@ -48,6 +48,10 @@ public class TestList {
 		Integer b = (a == null||"".equals(a) )? null:Integer.parseInt(a);
 		System.out.println(b.intValue());
 	}
+	@Test
+	public void test3(){
+		System.out.println(Long.parseLong(null));
+	}
 
 }
 
