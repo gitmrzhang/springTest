@@ -12,6 +12,8 @@
  */
 package com.zhang.module.login;
 
+import java.util.List;
+
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,12 @@ public class LoginService implements ILoginService,InitializingBean {
 	@DataSource("salver")
 	public UserVo getUser(String username) {
 		return loginDao.getUserByName(username);
+	}
+	
+	@DataSource("salver")
+	public List<UserVo> getUserList() {
+		String a = "123";
+		return loginDao.getUserList();
 	}
 
 	public void afterPropertiesSet() throws Exception {

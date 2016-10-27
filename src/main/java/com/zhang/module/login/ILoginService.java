@@ -12,6 +12,8 @@
  */
 package com.zhang.module.login;
 
+import java.util.List;
+
 import com.zhang.core.route.annotation.DataSource;
 import com.zhang.module.bean.CouponPo;
 import com.zhang.module.bean.UserPo;
@@ -24,6 +26,9 @@ public interface ILoginService {
 	 */
 	@DataSource("salver")
 	public UserVo getUser(String username) ;
+	
+	@DataSource("salver")
+	public List<UserVo> getUserList() ;
 	
 	void updateUser(UserPo userPo);
 	

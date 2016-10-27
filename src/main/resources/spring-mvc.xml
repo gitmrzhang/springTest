@@ -19,7 +19,11 @@
 	<!-- <mvc:annotation-driven /> -->
 	<bean name="handlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 	<bean name="handlerMapping" class="com.zhang.core.web.servlet.mvc.annotation.CustomRequestMappingHandlerMapping" />
-	<context:component-scan base-package="com.zhang.module.**.controller" />
+	  
+	<context:component-scan base-package="com.zhang.module" use-default-filters="false" >
+		<context:include-filter  type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+	
 	<mvc:view-controller path="/" view-name="redirect:/toLogin.do" />
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"

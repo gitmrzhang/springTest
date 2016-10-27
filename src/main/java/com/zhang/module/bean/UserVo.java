@@ -23,6 +23,7 @@ public class UserVo implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 8439043390403066893L;
+	private long id;
 	private String username;//用户名
 	private transient String password;//密码
 	

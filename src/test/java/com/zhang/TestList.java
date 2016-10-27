@@ -32,25 +32,12 @@ public class TestList {
 		a.add("zhang3");
 		a.add("zhang4");
 		a.add("zhang5");
-		TestList t = new TestList();
-		a=(List<String>) t.sub(a, 2);
-		System.out.println(a.size());
-		a= a.subList(1,2);
-		System.out.println(a.size());
-	}
-	@Test
-	public void test2(){
-//		String a = "6075520,6075521";
-//		String [] a1= a.split(",");
-//		System.out.println(a1.length);
-//		
-		String a = "";
-		Integer b = (a == null||"".equals(a) )? null:Integer.parseInt(a);
-		System.out.println(b.intValue());
-	}
-	@Test
-	public void test3(){
-		System.out.println(Long.parseLong(null));
+		List<String> a1 = a.subList(0,2);
+		List<String> a2 = a.subList(2,5);
+		System.out.println(a1);
+		System.out.println(a2);
+		int b = 31088;
+		System.out.println(b/3);
 	}
 
 }
